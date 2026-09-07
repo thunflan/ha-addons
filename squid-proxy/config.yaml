@@ -1,0 +1,39 @@
+name: "Squid Proxy"
+description: "Servidor de proxy HTTP/HTTPS de alto desempenho com cache, autenticação e logs detalhados"
+slug: "squid_proxy"
+version: "1.1.0"
+init: false
+arch:
+  - aarch64
+  - amd64
+  - armhf
+  - armv7
+  - i386
+startup: "application"
+boot: "auto"
+ports:
+  3128/tcp: 3128
+ports_description:
+  3128/tcp: "Porta de conexão do proxy Squid"
+schema:
+  log_level: "list(trace|debug|info|notice|warning|error|fatal)?"
+  http_port: "int"
+  allowed_networks:
+    - "str"
+  cache_size_mb: "int"
+  enable_auth: "bool"
+  username: "str?"
+  password: "password?"
+  custom_config: "str?"
+options:
+  log_level: "debug"
+  http_port: 3128
+  allowed_networks:
+    - "192.168.0.0/16"
+    - "10.0.0.0/8"
+    - "172.16.0.0/12"
+  cache_size_mb: 512
+  enable_auth: false
+  username: ""
+  password: ""
+  custom_config: ""
